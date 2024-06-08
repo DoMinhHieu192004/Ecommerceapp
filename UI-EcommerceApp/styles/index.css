@@ -33,7 +33,7 @@ header {
     right: 0;
     z-index: 1000;
     background: #fff;
-    padding: 2rem 9%;
+    padding: 2rem 5%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -45,6 +45,36 @@ header .logo {
     color: #000;
     font-weight: 500;
 }
+
+header div.search0 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+header .search {
+    border: 0.2rem solid #000;
+    border-radius: 5px;
+    width: 20vw;
+    font-size: 1.7rem;
+    text-transform: none;
+    color: #333;
+    padding: 0.5rem;
+    border: 0.2rem solid #000;
+    margin-top: 1rem 
+}
+
+header div.search0 span {
+    display: inline-block;
+    border-radius: 0.5rem;
+    font-weight: bolder;
+    font-size: 1.7rem;
+    color: #000;
+    cursor: pointer;
+    background: #fff;
+    margin-left: -20px;
+    margin-top: 10px;
+} 
 
 header .navbar a {
     font-size: 1.5rem;
@@ -279,7 +309,7 @@ section {
     justify-content: center;
     align-items: center;
     height: 195px;
-    width: 150px;
+    width: 140px;
 }
 
 .product .box-container .box:hover img {

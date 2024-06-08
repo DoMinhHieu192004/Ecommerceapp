@@ -78,29 +78,43 @@ const options = {
 }
 
 fetch('https://fakestoreapi.com/products', options)
-  .then(response => response.json())
-  .then(products => {
-    renderProducts(products);
-  })
-
+    .then(response => response.json())
+    .then(products => {
+        renderProducts(products);
+    })
+    .catch(error => console.error('Error fetching products:', error));
 
 function renderProducts(products) {
-    const productCarts = document.querySelectorAll('.slide');
-   
-  products.forEach((product, index) => {
-    const productCart = productCarts[index];
+    const home = document.querySelector('.home');
+    products.forEach((product) => {
+        const productContainer = document.createElement('div');
+        productContainer.classList.add('slide-container');
+        
+        const productSlide = document.createElement('div');
+        productSlide.classList.add('slide');
+        
+        productSlide.innerHTML = `
+            <div class="content">
+                <span>${product.category}</span>
+                <h3>${product.title}</h3>
+                <p>${product.description}</p>
+                <a href="#" class="btn" onclick="addToCart(${product.id})">add to cart</a>
+            </div>
+            <div class="image">
+                <img src="${product.image}" class="shoe" alt="product image" />
+            </div>`;
+        
+        productContainer.appendChild(productSlide);
+        home.appendChild(productContainer);
+    });
+    slides = document.querySelectorAll('.slide-container');
+    if (slides.length > 0) {
+        slides[0].classList.add('active');
+    }
+}
 
-    productCart.innerHTML = `
-      <div class="content">
-        <span>${product.category}</span>
-        <h3>${product.title}</h3>
-        <p>${product.description}</p>
-        <a href="#" class="btn" onclick="addToCart(${product.id})">add to cart</a>
-      </div>
-      <div class="image">
-        <img src="${product.image}" class="shoe" alt="shoe" />
-      </div>`;
-  });
+function addToCart(productId) {
+    console.log(`Product ${productId} added to cart`);
 }
 
 
